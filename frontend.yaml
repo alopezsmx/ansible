@@ -19,6 +19,10 @@
         ansible.builtin.rpm_key:
           state: present
           key: https://download.postgresql.org/pub/repos/yum/keys/PGDG-RPM-GPG-KEY-RHEL
+     -  name: Deshabilita el módulo de PostgreSQL predeterminado
+        dnf:
+          name: postgresql
+          state: absent     
      -  name: Instala postgres repos
         dnf:
           name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
