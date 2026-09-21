@@ -27,4 +27,7 @@
         dnf:
           name: postgresql18-server
           state: present
+          disable_gpg_check: true
+     -  name: Inicializa la base de datos de PostgreSQL
+        command: /usr/pgsql-18/bin/postgresql-18-setup initdb 
         
