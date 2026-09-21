@@ -15,6 +15,10 @@
    hosts: backend
    become: true
    tasks:
+     -  name: Importa la clave GPG de PostgreSQL
+        ansible.builtin.rpm_key:
+          state: present
+          key: https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG
      -  name: Instala postgres repos
         dnf:
           name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
