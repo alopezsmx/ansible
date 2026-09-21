@@ -23,11 +23,11 @@
         dnf:
           name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
           state: present
+          disable_gpg_check: true
      -  name: Instala postgres
         dnf:
           name: postgresql18-server
           state: present
-          disable_gpg_check: true
      -  name: Inicializa la base de datos de PostgreSQL
         command: /usr/pgsql-18/bin/postgresql-18-setup initdb 
         
