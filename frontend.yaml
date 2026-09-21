@@ -1,5 +1,5 @@
 -  name: Configura el frontend
-   host: frontend
+   hosts: frontend
    become: true
    tasks:
      -  name: Instala .net
@@ -12,7 +12,7 @@
           state: present
         
 -  name: Configura Backend
-   host: backend
+   hosts: backend
    Become: true
    tasks:
       - name: Instala postgres repos
