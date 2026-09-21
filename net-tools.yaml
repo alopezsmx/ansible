@@ -2,7 +2,7 @@
    hosts: all
    become: true
    tasks:
-   - name: instala net tools 
-      dnf:
-          name: net-tools
-          state: present
+     -  name: instala net tools 
+        dnf:
+           name: net-tools
+           state: present
