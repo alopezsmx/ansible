@@ -1,0 +1,26 @@
+-  name: Configura el frontend
+   host: frontend
+   become: true
+   tasks:
+     -  name: Instala .net
+        dnf:
+          name: dotnet-sdk-6.0
+          state: present
+     -  name: Instala Node.js
+        dnf:
+          name: nodejs
+          state: present
+        
+-  name: Configura Backend
+   host: backend
+   Become: true
+   tasks:
+      - name: Instala postgres repos
+        dnf:
+          name: https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+          state: present
+      - name: Instala postgres
+        dnf:
+          name: postgresql18-server
+          state: present
+        
