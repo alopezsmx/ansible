@@ -1,0 +1,31 @@
+name: Monta volumen
+hosts: anodo2
+become: true
+tasks:
+  name: Crea el directorio de montaje
+  ansible.builtin.file:
+    path: /mnt/datos
+    state: directory
+    mode: '0755'
+  name: extende el volumen fisico
+  ansible.builtin.lvg:
+     vg: almalinux
+     pvs: /dev/nvme0n1p2
+     pvresize: true
+  name: Crea el volumen lógico lv_adtos
+  ansible.builtin.lvol:
+     vg: almalinux
+     lv: lv_datos
+     size: 100%FREE
+  name: Formatea el volumen lógico con el sistema de archivos xfs
+  ansible.builtin.filesystem:
+     fstype: xfs
+     dev: /dev/almalinux/lv_datos
+  name: Monta el volumen lógico en el directorio de montaje
+  ansible.builtin.mount:
+    name: /mnt/datos
+    src: /dev/almalinux/lv_datos
+    fstype: xfs
+    opts: defaults
+    dump: 0
+    pass: 0
