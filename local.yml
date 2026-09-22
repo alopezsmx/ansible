@@ -1,6 +1,6 @@
-hosts:  localhost
-connection: local
-gather_facts: true
-tasks:
-  name: incluye el playbook lvm_incrementa.yaml
-  ansible.builtin.include_playbook: lvm_incrementa.yaml
+- hosts:  localhost
+  connection: local
+  gather_facts: true
+  tasks:
+  - name: incluye el playbook lvm_incrementa.yaml
+    ansible.builtin.include_playbook: lvm_incrementa.yaml
