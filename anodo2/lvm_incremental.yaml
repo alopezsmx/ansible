@@ -8,10 +8,9 @@
          state: directory
          mode: '0755'
      - name: extende el volumen fisico
-       ansible.builtin.lvg:
-         vg: almalinux
-         pvs: /dev/nvme0n1p2
-         pvresize: yes
+       ansible.builtin.lvm_pv:
+         device: /dev/nvme0n1p2
+         resize: true
      - name: Crea el volumen lógico lv_adtos
        ansible.builtin.lvol:
          vg: almalinux
