@@ -7,11 +7,11 @@
          path: /mnt/datos
          state: directory
          mode: '0755'
-     - name: extende el volumen fisico
-       community.general.lvm_pv:
-         dest: /dev/nvme0n1p2
-         state: present
-         resizepv: yes
+     #- name: extende el volumen fisico
+     #  community.general.lvm_pv:
+     #   dest: /dev/nvme0n1p2
+     #    state: present
+     #    resizepv: yes
      - name: Crea el volumen lógico lv_adtos
        ansible.builtin.lvol:
          vg: almalinux
