@@ -11,7 +11,7 @@
        ansible.builtin.lvg:
          vg: almalinux
          pvs: /dev/nvme0n1p2
-         pvresize: true
+         pvresize: yes
      - name: Crea el volumen lógico lv_adtos
        ansible.builtin.lvol:
          vg: almalinux
