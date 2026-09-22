@@ -1,4 +1,4 @@
-hosts:  anodo2
+hosts:  localhost
 connection: local
 gather_facts: true
 tasks:
