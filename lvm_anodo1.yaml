@@ -13,7 +13,7 @@
      #    resize: true         
      - name: extende el volumen fisico
        community.general.lvg:
-         vg: datos
+         #vg: datos
          pvs: /dev/nvme0n1p2
          pvresize: true
      - name: Crea el volumen lógico lv_adtos
