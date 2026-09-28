@@ -12,10 +12,7 @@
      #    device: /dev/nvme0n1p2
      #    resize: true         
      - name: extende el volumen fisico
-       community.general.lvg:
-         #vg: datos
-         pvs: /dev/nvme0n1p2
-         pvresize: true
+       ansible.builtin.command: pvresize /dev/nvme0n1p2
      - name: Crea el volumen lógico lv_adtos
        ansible.builtin.lvol:
          vg: datos
