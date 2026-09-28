@@ -11,11 +11,11 @@
      #  community.general.parted:
      #    device: /dev/nvme0n1p2
      #    resize: true         
-     - name: extende el volumen fisico
-       community.general.lvg:
-         vg: almalinux
-         pvs: /dev/nvme0n1p2
-         pvresize: true
+     #- name: extende el volumen fisico
+     #  community.general.lvg:
+     #    vg: almalinux
+     #    pvs: /dev/nvme0n1p2
+     #    pvresize: true
      - name: Crea el volumen lógico lv_adtos
        ansible.builtin.lvol:
          vg: almalinux
