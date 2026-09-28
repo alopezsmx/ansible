@@ -13,9 +13,14 @@
          resize: true         
      - name: extende el volumen fisico
        community.general.lvg:
-         vg: lv_datos
+         vg: almalinux
          pvs: /dev/nvme0n1p2
          pvresize: true
+     - name: Crea el volumen lógico lv_adtos
+       ansible.builtin.lvol:
+         vg: almalinux
+         lv: lv_datos
+         size: 100%FREE
      - name: Formatea el volumen lógico con el sistema de archivos xfs
        ansible.builtin.filesystem:
          fstype: xfs
