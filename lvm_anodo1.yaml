@@ -14,6 +14,11 @@
      - name: extende el volumen fisico
        ansible.builtin.command: pvresize /dev/nvme0n1p2
      - name: Crea el volumen lógico lv_adtos
+       ansible.builtin.lvg:
+         vg: datos
+         pvs: /dev/nvme0n1p2
+         state: present
+     - name: Crea el volumen lógico lv_adtos
        ansible.builtin.lvol:
          vg: datos
          lv: lv_datos
