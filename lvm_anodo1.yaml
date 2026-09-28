@@ -15,7 +15,7 @@
        community.general.lvg:
          vg: lv_datos
          pvs: /dev/nvme0n1p2
-         resize: true
+         pvresize: true
      - name: Formatea el volumen lógico con el sistema de archivos xfs
        ansible.builtin.filesystem:
          fstype: xfs
