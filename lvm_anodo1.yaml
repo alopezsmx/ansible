@@ -7,10 +7,10 @@
          path: /mnt/datos
          state: directory
          mode: '0755'
-     - name: extende el volumen fisico
-       community.general.parted:
-         device: /dev/nvme0n1p2
-         resize: true         
+     #- name: extende el volumen fisico
+     #  community.general.parted:
+     #    device: /dev/nvme0n1p2
+     #    resize: true         
      - name: extende el volumen fisico
        community.general.lvg:
          vg: almalinux
