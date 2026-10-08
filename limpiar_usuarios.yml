@@ -1,0 +1,17 @@
+- name: limpiar usuarios
+  hosts: nodos
+  become: yes
+  tasks:
+  - name: Eliminar archivo /etc/operadores.conf
+    ansible.builtin.file:
+      path: /etc/operadores.conf
+      state: absent
+  - name: Eliminar usuario soporte
+    ansible.builtin.user:
+      name: soporte
+      state: absent
+      remove: yes
+  - name: Eliminar grupo operadores
+    ansible.builtin.group:
+      name: operadores
+      state: absent
