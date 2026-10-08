@@ -20,9 +20,9 @@
     notify:
       - Reiniciar chronyd
 
-handlers:
-  - name: Reiniciar chronyd
-    ansible.builtin.service:
-      name: chronyd
-      state: restarted
+  handlers:
+    - name: Reiniciar chronyd
+      ansible.builtin.service:
+        name: chronyd
+        state: restarted
       
