@@ -1,0 +1,21 @@
+- name: Configurar cuentas de usuarios
+  hosts: nodos
+  become: yes
+  tasks:
+  - name: Crear grupo operadores  
+    ansible.builtin.group:
+      name: operadores
+      state: present
+  - name: Crear usuario soporte
+    ansible.builtin.user:
+      name: soporte
+      state: present
+      shell: /bin/bash
+      groups: operadores
+  - name: crear archivo /etc/operadores.conf
+    ansible.builtin.copy:
+      dest: /etc/operadores.conf
+      content: "Archivo gestionado por Ansible - No modificar manualmente"
+      owner: soporte
+      group: operadores
+      mode: '0640'
