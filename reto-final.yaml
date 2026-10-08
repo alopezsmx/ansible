@@ -1,0 +1,20 @@
+- name: Reto final
+  hosts: nodos
+  become: yes
+  vars:
+    paquete_extra: "tree"
+    archivo_meta: "/etc/nodo_info.txt"
+  tasks:
+  - name: Instalar paquete extra
+    ansible.builtin.dnf:
+      name: "{{ paquete_extra }}"
+      state: present
+      update_cache: yes
+  - name: Crear archivo de metadatos
+    ansible.builtin.copy:
+      dest: "{{ archivo_meta }}"
+      content: " {{ inventory_hostname }}\n Nodo gestionado por Ansible\n Reto final superado"
+      owner: root
+      group: root
+      mode: '0644'
+  
