@@ -1,0 +1,28 @@
+- name: configurar chronyd
+  hosts: nodos
+  become: yes
+  tasks:
+  - name: Instalar chrony
+    ansible.builtin.dnf:
+      name: chrony
+      state: present
+      update_cache: yes
+  - name: Iniciar y habilitar el servicio chronyd
+    ansible.builtin.service:
+      name: chronyd
+      state: started
+      enabled: yes
+  - name: configurar servidor NTP base
+    ansible.builtin.lineinfile:
+      path: /etc/chrony.conf
+      line: "server pool.ntp.org iburst"
+      state: present
+    notify:
+      - Reiniciar chronyd
+
+handlers:
+  - name: Reiniciar chronyd
+    ansible.builtin.service:
+      name: chronyd
+      state: restarted
+      
