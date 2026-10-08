@@ -1,0 +1,14 @@
+- name : Instalar y configurar Apache
+  hosts: nodos
+  become: yes
+  tasks:
+  - name: Instalar httpd
+    ansible.builtin.dnf:
+      name: httpd
+      state: present
+      update_cache: yes
+  - name: Iniciar y habilitar el servicio httpd
+    ansible.builtin.service:
+      name: httpd
+      state: started
+      enabled: yes
