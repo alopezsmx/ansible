@@ -1,0 +1,13 @@
+- name: Limpiar httpd
+  hosts: nodos
+  become: yes
+  tasks:
+  - name: Detener el servicio httpd
+    ansible.builtin.service:
+      name: httpd
+      state: stopped
+      enabled: no
+  - name: Desinstalar httpd
+    ansible.builtin.dnf:
+      name: httpd
+      state: absent
