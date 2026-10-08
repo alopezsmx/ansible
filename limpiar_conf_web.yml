@@ -13,5 +13,5 @@
       state: absent
   - name: Eliminar index.html
     ansible.builtin.file:
-    path: /var/www/html/index.html
-    ensure: absent
+      path: /var/www/html/index.html
+      ensure: absent
